@@ -160,7 +160,6 @@ public class PlayerMovement : MonoBehaviour
     {
         this.horizontalInput = Input.GetAxisRaw("Horizontal");
         this.verticalInput = Input.GetAxisRaw("Vertical");
-        Debug.Log(this.horizontalInput);
         if (Input.GetKey(jumpKey) && isJumpReady && isGrounded)
         {
             isJumpReady = false;
