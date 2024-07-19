@@ -8,6 +8,8 @@ public class InteractableObject : MonoBehaviour, IInteractable, IPickupable
     private bool _interactable;
     [SerializeField]
     private bool _pickupable;
+    [SerializeField]
+    private GameObject _interactEffect;
 
     private Rigidbody _rigidbody;
 
@@ -19,7 +21,15 @@ public class InteractableObject : MonoBehaviour, IInteractable, IPickupable
     public void Interact()
     {
         if (_interactable)
+        {
+            if(_interactEffect != null)
+            {
+                this._interactEffect.GetComponent<IInteractEffect>().ExecuteEffect();
+            }
+
             Debug.Log(this.gameObject.name + " has been interacted");
+        }
+            
     }
 
     public void Pickup(Transform playerTransform)
@@ -41,5 +51,15 @@ public class InteractableObject : MonoBehaviour, IInteractable, IPickupable
             transform.SetParent(null);
             Debug.Log(this.gameObject.name + " has been dropped");
         }
+    }
+
+    public bool IsInteractable
+    {
+        get { return _interactable; }
+    }
+
+    public bool IsPickupable
+    {
+        get { return _pickupable; }
     }
 }
