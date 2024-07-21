@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -45,9 +46,9 @@ public class PlayerInteract : MonoBehaviour
         }
 
         // Debugging raycast
-        Debug.DrawRay(_cameraTransform.position, _cameraTransform.forward * _interactDistance, Color.red);
+        //Debug.DrawRay(_cameraTransform.position, _cameraTransform.forward * _interactDistance, Color.red);
 
-        if (!_hasObject) 
+        if (!_hasObject)
         {
             HighlightObject();
         }
@@ -94,19 +95,16 @@ public class PlayerInteract : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _interactDistance))
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-            if (interactable != null)
+            IHighlightable highlightable = hit.collider.GetComponent<IHighlightable>();
+            if (highlightable != null)
             {
                 Renderer renderer = hit.collider.GetComponent<Renderer>();
-                if (renderer != null)
+                if (renderer != null && renderer != _highlightedRenderer)
                 {
-                    if (_highlightedRenderer != renderer)
-                    {
-                        ClearHighlight();
-                        _originalMaterial = renderer.material;
-                        renderer.material = _highlightMaterial;
-                        _highlightedRenderer = renderer;
-                    }
+                    ClearHighlight();
+                    _originalMaterial = renderer.material;
+                    renderer.material = _highlightMaterial;
+                    _highlightedRenderer = renderer;
                 }
             }
             else

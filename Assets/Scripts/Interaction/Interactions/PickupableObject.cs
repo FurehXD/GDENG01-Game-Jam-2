@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableObject : MonoBehaviour, IInteractable, IPickupable
+public class PickupableObject : MonoBehaviour, IHighlightable, IPickupable
 {
-    [SerializeField]
-    private bool _interactable;
     [SerializeField]
     private bool _pickupable;
     [SerializeField]
@@ -15,23 +13,8 @@ public class InteractableObject : MonoBehaviour, IInteractable, IPickupable
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        this._rigidbody = GetComponent<Rigidbody>();
     }
-
-    public void Interact()
-    {
-        if (_interactable)
-        {
-            if(_interactEffect != null)
-            {
-                this._interactEffect.GetComponent<IInteractEffect>().ExecuteEffect();
-            }
-
-            Debug.Log(this.gameObject.name + " has been interacted");
-        }
-            
-    }
-
     public void Pickup(Transform playerTransform)
     {
         if (_pickupable)
@@ -51,11 +34,6 @@ public class InteractableObject : MonoBehaviour, IInteractable, IPickupable
             transform.SetParent(null);
             Debug.Log(this.gameObject.name + " has been dropped");
         }
-    }
-
-    public bool IsInteractable
-    {
-        get { return _interactable; }
     }
 
     public bool IsPickupable
