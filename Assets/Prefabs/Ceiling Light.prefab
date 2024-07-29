@@ -4249,6 +4249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1064816757768287766}
   - component: {fileID: 1590527643435194781}
+  - component: {fileID: 4612914866511278171}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -4265,7 +4266,7 @@ Transform:
   m_GameObject: {fileID: 7646325646549197786}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.046, y: 0, z: -1.208}
+  m_LocalPosition: {x: 1.046, y: 1.12, z: -1.003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4282,9 +4283,9 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 0.8018868, g: 0.63768387, b: 0.4274208, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1.91
   m_Range: 16.73
-  m_SpotAngle: 58
+  m_SpotAngle: 66
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -4315,8 +4316,8 @@ Light:
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_Flare: {fileID: 12100000, guid: 9bdb18c49d114cb4300035184241aa39, type: 2}
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4332,3 +4333,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!123 &4612914866511278171
+LensFlare:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646325646549197786}
+  m_Enabled: 0
+  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
+  m_Color: {r: 0.6886792, g: 0.450738, b: 0, a: 0}
+  m_Brightness: 0.33
+  m_FadeSpeed: 3
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 6
+  m_Directional: 0
