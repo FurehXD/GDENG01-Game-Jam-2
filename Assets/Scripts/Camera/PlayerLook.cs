@@ -12,7 +12,6 @@ public class PlayerLook : MonoBehaviour
 
     void Start()
     {
-        // Lock the cursor to the center of the screen and hide it
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -22,16 +21,13 @@ public class PlayerLook : MonoBehaviour
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSensitivity;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSensitivity;
 
-        // Calculating X axis rotation for looking up and down
         yRotation += mouseX;
         xRotation -= mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limiting rotation to avoid flipping
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f); 
 
-        // Apply rotation for looking up and down
         camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         playerOrientation.rotation = Quaternion.Euler(0, yRotation, 0f);
-        // Apply rotation for turning left and right
     }
 
     public void DoFov(float endValue)
