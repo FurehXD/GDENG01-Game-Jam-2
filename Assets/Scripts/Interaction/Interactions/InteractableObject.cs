@@ -6,9 +6,9 @@ public class InteractableObject : MonoBehaviour, IHighlightable, IInteractable
 {
     [SerializeField]
     private bool _interactable;
-    
+
     [SerializeField]
-    private GameObject _interactEffect;
+    private GameObject[] _interactEffect;
 
     private Rigidbody _rigidbody;
 
@@ -21,20 +21,20 @@ public class InteractableObject : MonoBehaviour, IHighlightable, IInteractable
     {
         if (_interactable)
         {
-            if(_interactEffect != null)
+            if (_interactEffect != null)
             {
-                this._interactEffect.GetComponent<IInteractEffect>().ExecuteEffect();
+                foreach (GameObject effect in _interactEffect)
+                {
+                    effect.GetComponent<IInteractEffect>().ExecuteEffect();
+                }
             }
 
             Debug.Log(this.gameObject.name + " has been interacted");
         }
-            
     }
 
     public bool IsInteractable
     {
         get { return _interactable; }
     }
-
-    
 }
