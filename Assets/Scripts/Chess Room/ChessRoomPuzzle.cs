@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenRoomPuzzle : MonoBehaviour
+public class ChessRoomPuzzle : MonoBehaviour
 {
     [SerializeField]
     private GameObject Key;
