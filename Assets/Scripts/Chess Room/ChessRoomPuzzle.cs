@@ -36,6 +36,7 @@ public class ChessRoomPuzzle : MonoBehaviour
        {
             Key.SetActive(true);
             KingPiece.SetActive(false);
+            PuzzleManager.Instance.DecrementPuzzlesRemaining();
        }
 
        if(PlayerPiece.transform.position != initialPosition) {
