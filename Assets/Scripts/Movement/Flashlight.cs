@@ -14,7 +14,7 @@ public class Flashlight : MonoBehaviour
             flashlight.enabled = !flashlight.enabled;
         }
 
-        // Detect interactable objects if the flashlight is on
+       
         if (flashlight.enabled)
         {
             DetectInteractableObjects();
