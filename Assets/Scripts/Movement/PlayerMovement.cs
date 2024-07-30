@@ -88,6 +88,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip[] SFX_footsteps;
     [SerializeField] private AudioClip SFX_jump;
 
+    [Header("Flashlight")]
+    [SerializeField] private Flashlight flashlight;
+
+    [Header("Camera")]
+    [SerializeField] private PlayerLook camera;
+
     private float timer = 0.0f;
 
     private void StateHandler()
@@ -139,6 +145,12 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+
+        // Update flashlight orientation
+        if (flashlight != null)
+        {
+            flashlight.transform.rotation = camera.camHolder.rotation;
+        }
 
         if (isGrounded)
         {
