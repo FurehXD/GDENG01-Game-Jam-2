@@ -17,6 +17,7 @@ public class ChessRoomPuzzle : MonoBehaviour
     private bool solved;
 
     private Vector3 initialPosition;
+    private bool _isFinished = false;
 
     private void Start()
     {
@@ -36,7 +37,12 @@ public class ChessRoomPuzzle : MonoBehaviour
        {
             Key.SetActive(true);
             KingPiece.SetActive(false);
-            PuzzleManager.Instance.DecrementPuzzlesRemaining();
+            if(_isFinished == false)
+            {
+                PuzzleManager.Instance.DecrementPuzzlesRemaining();
+                _isFinished = true;
+            }
+            
        }
 
        if(PlayerPiece.transform.position != initialPosition) {
